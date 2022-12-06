@@ -1,0 +1,10 @@
+<!--<div *ngIf='screenSize === "lg"'>Large screen</div>-->
+<div *ngIf='!isLoading; else spinner'>
+  <app-movie-card
+    *ngFor='let movie of movies'
+    [movie]='movie'
+  ></app-movie-card>
+</div>
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>

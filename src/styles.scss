@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/*--- Color variables ---*/
+:root {
+  --color-background: #EFEFEF;
+  --color-background-light: #FFFFFF;
+  --color-background-dark: #242426;
+  --color-text-primary: #000000;
+  --color-text-pale: #AFB2B6;
+  --color-primary: #7B61FF;
+  --color-secondary: #80858B;
+  --color-error: #FF5154;
+  --color-rating-low: #F45D2D;
+  --color-rating-average: #F3A608;
+  --color-rating-high: #00A340;
+}
+
+[data-theme='dark'] {
+  --color-background: #000000;
+  --color-background-light: #323537;
+  --color-background-dark: #CCCCCC;
+  --color-text-primary: #FFFFFF;
+}
+
+/*--- Templates ---*/
+%tpl_movie-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  //line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+%tpl_movie-subtitle {
+  font-weight: 500;
+  font-size: 1rem;
+  //line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+%tpl_secondary-text {
+  font-weight: 500;
+  font-size: 1rem;
+  //line-height: 1.5;
+  color: var(--color-text-pale);
+}
+
+/*--- Style reset ---*/
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,:active{
+  outline: none;
+}
+
+a:focus,a:active{
+  outline: none;
+}
+
+nav,footer,header,main,aside{
+  display: block;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-family: 'Exo 2', sans-serif;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,textarea,button{
+  font-size: inherit;
+}
+
+input -ms-clear{
+  display: none;
+}
+
+button{
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button -moz-focus-inner{
+  padding: 0;
+  border: 0;
+}
+
+a,a:visited,a:hover{
+  text-decoration: none;
+}
+
+ul li{
+  list-style: none;
+}
+
+img{
+  vertical-align: top;
+}

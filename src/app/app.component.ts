@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'filmopoisk';
+  darkMode = false;
+
+  toggleTheme() {
+    this.darkMode = !this.darkMode;
+    document.documentElement.setAttribute('data-theme', this.darkMode ? 'dark' : 'light');
+  }
 }

@@ -1,0 +1,63 @@
+@use 'src/styles';
+
+.card__image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.card__image-wrapper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 0.7;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.card__imdb {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #FFFFFF;
+
+  &[data-rating='null'] {
+    display: none;
+  }
+
+  &[data-rating='low'] {
+    background-color: var(--color-rating-low);
+  }
+
+  &[data-rating='average'] {
+    background-color: var(--color-rating-average);
+  }
+
+  &[data-rating='high'] {
+    background-color: var(--color-rating-high);
+  }
+}
+
+.card__info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card__country{
+  @extend %tpl_secondary-text;
+}
+
+h5 {
+  @extend %tpl_movie-title;
+}
+
+h6 {
+  @extend %tpl_movie-subtitle;
+}
