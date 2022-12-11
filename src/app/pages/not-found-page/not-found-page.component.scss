@@ -1,0 +1,17 @@
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+p {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-primary);
+}

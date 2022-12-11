@@ -1,33 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {IMovie} from '../../../types/types';
-import {MoviesService} from '../../../api/movies.service';
-import {ResponsiveService} from '../../../services/responsive.service';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Subscription} from 'rxjs';
+
+import {PageType} from '../../../api/api.constants';
+import {MoviesAPIService} from '../../../api/moviesAPI.service';
 
 @Component({
   selector: 'app-movies-area',
   templateUrl: './movies-area.component.html',
   styleUrls: ['./movies-area.component.scss']
 })
-export class MoviesAreaComponent implements OnInit{
-  isLoading = false;
-  movies: IMovie[] = [];
-  screenSize: string = '';
+export class MoviesAreaComponent implements OnInit, OnDestroy {
+  sub: Subscription | undefined;
+  queryParams: Params | undefined;
 
-  constructor(private moviesService: MoviesService, private responsiveService: ResponsiveService) {}
+  @Input() pageType: PageType = PageType.HOME;
+
+  constructor(public moviesService: MoviesAPIService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // this.fetchMovies();
-    this.responsiveService.mediaBreakpoint$.subscribe((size) => {
-      this.screenSize = size;
-    });
+    this.sub = this.route.queryParams.subscribe((params: Params) => {
+      this.queryParams = params;
+      // this.moviesService.getMovies(this.pageType, this.queryParams);
+    })
   }
 
-  fetchMovies() {
-    this.isLoading = true;
-    this.moviesService.fetchMovies()
-      .subscribe(movies => {
-        this.movies = movies.items;
-        this.isLoading = false;
-      })
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 }

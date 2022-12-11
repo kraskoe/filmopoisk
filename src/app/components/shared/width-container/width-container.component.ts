@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
     <ng-content></ng-content>
   </div>`,
   styles: [`div {
-    max-width: 100%;
+    width: 100%;
   }`]
 
 })

@@ -1,11 +1,11 @@
 import {Injectable, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, debounceTime, fromEvent, Subject, takeUntil} from 'rxjs';
+import {BehaviorSubject, debounceTime, fromEvent, Subject, Subscription, takeUntil} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResponsiveService implements OnDestroy {
-  private _unsubscriber$: Subject<any> = new Subject();
+  private sub: Subscription | undefined;
   private _screenWidth$: BehaviorSubject<number> = new BehaviorSubject(0);
   private _mediaBreakpoint$: BehaviorSubject<string> = new BehaviorSubject('');
 
@@ -19,7 +19,6 @@ export class ResponsiveService implements OnDestroy {
     fromEvent(window, 'resize')
       .pipe(
         debounceTime(500),
-        takeUntil(this._unsubscriber$)
       )
       .subscribe((evt: any) => {
       this._setScreenWidth(evt.target.innerWidth);
@@ -28,8 +27,7 @@ export class ResponsiveService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    // this._unsubscriber$.next();
-    this._unsubscriber$.complete();
+    this.sub?.unsubscribe();
     this._screenWidth$.complete();
     this._mediaBreakpoint$.complete();
   }

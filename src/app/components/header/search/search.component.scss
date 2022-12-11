@@ -1,0 +1,27 @@
+div {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-light);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+
+  &::placeholder {
+    font-weight: 500;
+    color: var(--color-text-pale);
+  }
+}
+
+button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-background-light);
+
+  .active {
+    fill: var(--color-primary);
+  }
+}

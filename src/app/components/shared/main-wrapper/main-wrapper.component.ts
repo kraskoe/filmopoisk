@@ -6,7 +6,20 @@ import {Component} from '@angular/core';
     <ng-content></ng-content>
   </div>`,
   styles: [`div {
-    background-color: var(--color-background)
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--color-background);
+    display: flex;
+    padding: 2rem 1.5rem;
+
+    @media (min-width: (768rem / 16)) {
+      padding: 2.5rem;
+    }
+
+    @media (min-width: (1024rem / 16)) {
+      padding: 2.5rem 4rem;
+    }
   }`]
 
 })

@@ -23,6 +23,10 @@ import { Component } from '@angular/core';
       animation: spinner 1.5s linear infinite;
     }
     .spinner__wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
       justify-content: center;
       align-items: center;

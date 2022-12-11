@@ -1,0 +1,10 @@
+<header>
+  <app-logo *ngIf='screenSize === "sm" || screenSize === "md"'></app-logo>
+  <div style='flex: 1 0 auto'>
+    <app-search></app-search>
+  </div>
+  <a href='#'>
+    <app-svg-icon icon='user-icon'></app-svg-icon>
+<!--    <app-svg-icon [icon]='"user-icon"'></app-svg-icon>-->
+  </a>
+</header>

@@ -1,0 +1,11 @@
+<div>
+  <input
+    type='text'
+    placeholder='Search'
+    [(ngModel)]='keyword'
+    (keydown.enter)='onEnterDown()'
+  />
+  <button (click)='toggleFilter()'>
+    <app-svg-icon icon='filter-icon' [ngClass]='{inactive: !filterActive, active: filterActive, pale: true}'></app-svg-icon>
+  </button>
+</div>

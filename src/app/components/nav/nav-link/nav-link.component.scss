@@ -1,0 +1,37 @@
+//--- Using deprecated ::ng-deep is the best variant ---//
+:host:hover ::ng-deep svg {
+  fill: var(--color-primary-hover);
+}
+
+:host a.active ::ng-deep svg {
+  fill: var(--color-primary);
+}
+
+li {
+  margin-bottom: 2.5rem;
+  list-style: none;
+}
+
+li a {
+  line-height: 1.5;
+  position: relative;
+  padding-left: 2rem;
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+
+  &.active {
+    color: var(--color-primary);
+  }
+
+  & span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 1.25rem;
+    top: 0;
+    left: 0;
+  }
+}

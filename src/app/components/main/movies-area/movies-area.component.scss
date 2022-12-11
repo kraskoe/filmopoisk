@@ -1,6 +1,28 @@
-div {
+.movie__grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+p {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-primary);
 }

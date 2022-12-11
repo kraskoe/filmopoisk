@@ -1,0 +1,25 @@
+nav {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 10rem;
+  margin-left: 3rem;
+  margin-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 3rem 0;
+}
+
+footer {
+  font-weight: 500;
+  color: var(--color-text-pale);
+}
+
+ul {
+  margin-top: 3rem;
+}
+
