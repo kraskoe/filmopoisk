@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor='let number of numbers'>
+    <a [routerLink]='link' [queryParams]='{page: number}' [class.active]='isLinkActive(number)' queryParamsHandling='merge'>{{number}}</a>
+  </li>
+</ul>

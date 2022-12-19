@@ -1,1 +1,79 @@
-<p>movie-page works!</p>
+<section *ngIf='!moviesService.isLoading; else spinner'>
+  <div *ngIf='!moviesService.error; else errorMessage'>
+    <div class='movie-page__wrapper'>
+      <div class='movie-page__poster-container'>
+        <img [src]=moviesService.movie.posterUrlPreview alt='poster' class='movie-page__poster' *ngIf='moviesService.movie' (click)='toggleModalActive()'/>
+      </div>
+      <div class='movie-page__props'>
+        <div>
+         <span class='desc-pale' *ngIf='moviesService.movie'>
+           {{moviesService.movie.genres | objectArrayMap:'genre' | arrayJoin:' &bull; '}}
+         </span>
+        </div>
+        <h3 *ngIf='moviesService.movie?.nameRu?.trim()'>{{moviesService.movie?.nameRu}}</h3>
+        <h4 *ngIf='moviesService.movie?.nameOriginal?.trim()'>{{moviesService.movie?.nameOriginal}}</h4>
+        <div class='movie-page__rating-container'>
+          <p class='movie-page__rating' *ngIf='moviesService.movie?.ratingImdb'><span>IMDB </span>{{moviesService.movie?.ratingImdb | number: '1.1-1'}}</p>
+          <p class='movie-page__rating' *ngIf='moviesService.movie?.ratingFilmCritics'>{{moviesService.movie?.ratingFilmCritics | number: '1.1-1'}}</p>
+          <p class='movie-page__rating' *ngIf='moviesService.movie?.ratingAgeLimits'>{{moviesService.movie?.ratingAgeLimits | ageRating}}</p>
+        </div>
+        <div class='movie-page__desc'>
+          <span>{{moviesService.movie?.description}}</span>
+          <span>{{moviesService.movie?.shortDescription}}</span>
+        </div>
+        <div>
+          <table>
+            <tr *ngIf='moviesService.movie?.year'>
+              <td class='desc-pale'>Release</td>
+              <td>{{moviesService.movie?.year}}</td>
+            </tr>
+            <tr *ngIf='moviesService.movie'>
+              <td class='desc-pale'>Country</td>
+              <td>{{moviesService.movie.countries | objectArrayMap:'country' | arrayJoin:' &bull; '}}</td>
+            </tr>
+            <tr *ngIf='moviesService.movie'>
+              <td class='desc-pale'>3D</td>
+              <td>{{moviesService.movie.has3D ? '+' : '-'}}</td>
+            </tr>
+            <tr *ngIf='moviesService.movie'>
+              <td class='desc-pale'>IMAX</td>
+              <td>{{moviesService.movie.hasImax ? '+' : '-'}}</td>
+            </tr>
+            <tr *ngIf='moviesService.movie?.filmLength'>
+              <td class='desc-pale'>Duration</td>
+              <td>{{moviesService.movie?.filmLength | number: '1.0-0'}} min ({{moviesService.movie?.filmLength | number: '1.0-0' | minutesToHours}})</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class='movie-page__similars-container'>
+      <p>Recommendations</p>
+      <swiper
+        [slidesPerView]=slides
+        [spaceBetween]="16"
+        [navigation]="true"
+      >
+        <ng-template swiperSlide *ngFor='let movie of moviesService.similarMovies'>
+          <app-similars-card [movie]='movie'></app-similars-card>
+        </ng-template>
+      </swiper>
+    </div>
+
+    <div class='movie-page__modal' *ngIf='isModalActive' (click)='toggleModalActive()'>
+      <img [src]=moviesService.movie?.posterUrl alt='poster'>
+    </div>
+  </div>
+
+  <ng-template #errorMessage>
+    <div class='error__container'>
+      <p class='error'>Error: {{moviesService.error}}</p>
+      <p>Return to <a [routerLink]='"/"'>Main page</a></p>
+    </div>
+  </ng-template>
+</section>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>

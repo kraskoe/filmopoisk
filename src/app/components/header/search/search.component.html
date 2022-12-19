@@ -3,9 +3,10 @@
     type='text'
     placeholder='Search'
     [(ngModel)]='keyword'
+    (blur)='onBlur()'
     (keydown.enter)='onEnterDown()'
   />
-  <button (click)='toggleFilter()'>
+  <button (click)='toggleFilter()' *ngIf='isFilterPage()'>
     <app-svg-icon icon='filter-icon' [ngClass]='{inactive: !filterActive, active: filterActive, pale: true}'></app-svg-icon>
   </button>
 </div>

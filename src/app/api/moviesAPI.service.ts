@@ -1,23 +1,36 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {forkJoin, Observable} from 'rxjs';
 
-import {KINOPOISK_BASE_URL, MOVIES_ENDPOINT, PageType, PREMIERES_ENDPOINT, TOP_MOVIES_ENDPOINT} from './api.constants';
+import {PageType} from './api.constants';
 import {
+  IFilterCountry,
+  IFiltersResponse, IFilterGenre,
   IMovie,
   IMoviesQueryParams,
   IMoviesResponse,
   IPremieresQueryParams,
   IPremieresResponse,
   ITopMoviesQueryParams,
-  ITopMoviesResponse
+  ITopMoviesResponse, ISingleMovie, ISimilarMovie, ISimilarMoviesResponse
 } from './types';
+import {environment} from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class MoviesAPIService {
   isLoading = false;
+  filtersLoading = false;
+  isMovieLoading = false;
   error: string | null = null;
+  filtersError: string | null = null;
+  movieError: string | null = null;
   movies: IMovie[] | null = null;
+  genres: IFilterGenre[] | null = null;
+  countries: IFilterCountry[] | null = null;
+  movie: ISingleMovie | null = null;
+  similarMovies: ISimilarMovie[] | null = null;
+  pages: number | null = null;
+  totalItems: number | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -29,10 +42,16 @@ export class MoviesAPIService {
     this.fetchOnPageType(pageType, queryParams)
       .subscribe(
         {
-          next: movies => {
+          next: response => {
             pageType === PageType.TOP ?
-              this.movies = (movies as ITopMoviesResponse).films :
-              this.movies = (movies as IMoviesResponse | IPremieresResponse).items;
+              this.movies = (response as ITopMoviesResponse).films :
+              this.movies = (response as IMoviesResponse | IPremieresResponse).items;
+            if (pageType === PageType.TOP) this.pages = (response as ITopMoviesResponse).pagesCount;
+            if (pageType === PageType.HOME) {
+              this.pages = (response as IMoviesResponse).totalPages;
+              this.totalItems = (response as IMoviesResponse).total;
+            }
+            if (pageType === PageType.PREMIERES) this.totalItems = (response as IPremieresResponse).total;
             this.error = null;
             this.isLoading = false;
           },
@@ -55,9 +74,65 @@ export class MoviesAPIService {
     }
 
     switch (pageType) {
-      case PageType.TOP: return this.http.get<ITopMoviesResponse>(KINOPOISK_BASE_URL + TOP_MOVIES_ENDPOINT, {params});
-      case PageType.PREMIERES: return this.http.get<IPremieresResponse>(KINOPOISK_BASE_URL + PREMIERES_ENDPOINT, {params});
-      default: return this.http.get<IMoviesResponse>(KINOPOISK_BASE_URL + MOVIES_ENDPOINT, {params});
+      case PageType.TOP: return this.http.get<ITopMoviesResponse>(environment.KINOPOISK_BASE_URL + environment.TOP_MOVIES_ENDPOINT, {params});
+      case PageType.PREMIERES: return this.http.get<IPremieresResponse>(environment.KINOPOISK_BASE_URL + environment.PREMIERES_ENDPOINT, {params});
+      default: return this.http.get<IMoviesResponse>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT, {params});
     }
+  }
+
+  getFilters() {
+    this.filtersLoading = true;
+    this.filtersError = null;
+    this.genres = null;
+    this.countries = null;
+
+    this.http.get<IFiltersResponse>(environment.KINOPOISK_BASE_URL + environment.COUNTRIES_GENRES_ENDPOINT)
+      .subscribe(
+        {
+          next: filters => {
+            this.genres = (filters as IFiltersResponse).genres;
+            this.countries = (filters as IFiltersResponse).countries;
+            this.filtersError = null;
+            this.filtersLoading = false;
+          },
+          error: error => {
+            this.filtersLoading = false;
+            if (error.error.error) {
+              this.filtersError = error.error.error;
+            } else if (error.error.message) {
+              this.filtersError = error.error.message;
+            } else this.filtersError = 'Server error';
+          }
+        }
+      )
+  }
+
+  getMovie(id: number) {
+    this.isMovieLoading = true;
+    this.movieError = null;
+    this.movie = null;
+
+    forkJoin([
+      this.http.get<ISingleMovie>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT + `/${id}`),
+      this.http.get<ISimilarMoviesResponse>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT + `/${id}/similars`)
+    ])
+      .subscribe(
+        {
+          next: results => {
+            this.movie = results[0];
+            this.similarMovies = results[1].items;
+            this.movieError = null;
+            this.isMovieLoading = false;
+          },
+          error: error => {
+            this.isMovieLoading = false;
+            if (error.error.error) {
+              this.movieError = error.error.error;
+            } else if (error.error.message) {
+              this.movieError = error.error.message;
+            } else this.movieError = 'Server error';
+          }
+        }
+      )
   }
 }

@@ -1,0 +1,172 @@
+
+
+:host {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+section {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+div {
+  color: var(--color-text-primary);
+}
+
+table {
+  margin-top: 2rem;
+}
+
+td {
+  min-width: 7rem;
+  vertical-align: top;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h3,
+h4 {
+  color: var(--color-text-primary);
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.5;
+
+  @media (min-width: 36rem) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 64rem) {
+    font-size: 2.5rem;
+  }
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.5;
+
+  @media (min-width: 36rem) {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 64rem) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.movie-page__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 100%;
+  margin-top: 1rem;
+
+  @media (min-width: 36rem) {
+    flex-direction: row;
+  }
+}
+
+.movie-page__poster-container {
+  flex: 1 0 auto;
+  width: 100%;
+
+  @media (min-width: 36rem) {
+    flex: 1 0 30%;
+  }
+
+  @media (min-width: 64rem) {
+    flex: 1 0 25%;
+  }
+}
+
+.movie-page__poster {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.movie-page__props {
+  flex: 1 0 auto;
+  max-width: 100%;
+
+  @media (min-width: 36rem) {
+    flex: 1 0 65%;
+  }
+
+  @media (min-width: 64rem) {
+    flex: 1 0 70%;
+  }
+}
+
+.movie-page__rating-container {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.movie-page__rating {
+  color: #FFFFFF;
+  background-color: var(--color-background-dark);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.movie-page__desc {
+  margin-top: 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.movie-page__modal {
+  background-color: var(--color-background-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.movie-page__similars-container {
+  margin: 2rem auto 0 auto;
+  max-width: 90vw;
+  overflow: hidden;
+
+  @media (min-width: 64rem) {
+    max-width: 70vw;
+  }
+
+  @media (min-width: 80rem) {
+    max-width: 75vw;
+  }
+
+  @media (min-width: 90rem) {
+    max-width: 80vw;
+  }
+}
+
+.desc-pale {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-pale);
+}

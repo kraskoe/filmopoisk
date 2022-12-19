@@ -1,10 +1,10 @@
 <app-main-wrapper>
   <app-nav-bar *ngIf='screenSize === "lg"'></app-nav-bar>
+  <app-nav-mobile [class.active]='mainMenuService.isActive' *ngIf='screenSize !== "lg"'></app-nav-mobile>
   <div class='main-container'>
     <app-header></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
   </div>
-  <!--    <button (click)="toggleTheme()">Change theme</button>-->
 </app-main-wrapper>

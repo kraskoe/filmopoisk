@@ -1,0 +1,25 @@
+p {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+span {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+}
+
+input,
+select {
+  margin: 0.5rem 0 1rem;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+small {
+  color: var(--color-error);
+}
+

@@ -1,18 +1,6 @@
 div {
   position: relative;
-}
-
-input {
-  width: 100%;
-  color: var(--color-text-primary);
-  background-color: var(--color-background-light);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-
-  &::placeholder {
-    font-weight: 500;
-    color: var(--color-text-pale);
-  }
+  display: flex;
 }
 
 button {
@@ -23,5 +11,15 @@ button {
 
   .active {
     fill: var(--color-primary);
+  }
+}
+
+input {
+  padding: 1rem;
+  width: 5rem;
+  flex: 1 0 auto;
+
+  @media (min-width: 36rem) {
+    padding: 1.25rem;
   }
 }

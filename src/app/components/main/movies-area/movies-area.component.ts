@@ -12,7 +12,6 @@ import {MoviesAPIService} from '../../../api/moviesAPI.service';
 })
 export class MoviesAreaComponent implements OnInit, OnDestroy {
   sub: Subscription | undefined;
-  queryParams: Params | undefined;
 
   @Input() pageType: PageType = PageType.HOME;
 
@@ -20,8 +19,8 @@ export class MoviesAreaComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe((params: Params) => {
-      this.queryParams = params;
-      // this.moviesService.getMovies(this.pageType, this.queryParams);
+      //--- Daily limit of 500 requests ---//
+      // this.moviesService.getMovies(this.pageType, params);
     })
   }
 

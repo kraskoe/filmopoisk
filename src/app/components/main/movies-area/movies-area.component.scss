@@ -1,20 +1,9 @@
 .movie__grid-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   grid-gap: 1rem;
-  padding: 1rem;
-}
-
-.error__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.error {
-  color: var(--color-error);
+  padding: 1rem 0;
 }
 
 p {

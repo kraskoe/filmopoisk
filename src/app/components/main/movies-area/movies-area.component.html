@@ -1,5 +1,5 @@
 <!--<div *ngIf='screenSize === "lg"'>Large screen</div>-->
-<div *ngIf='!moviesService.isLoading; else spinner'>
+<section *ngIf='!moviesService.isLoading; else spinner'>
   <div *ngIf='!moviesService.error; else errorMessage' class='movie__grid-container'>
     <app-movie-card
       *ngFor='let movie of moviesService.movies'
@@ -12,7 +12,7 @@
       <p>Return to <a [routerLink]='"/"'>Main page</a></p>
     </div>
   </ng-template>
-</div>
+</section>
 <ng-template #spinner>
   <app-spinner></app-spinner>
 </ng-template>

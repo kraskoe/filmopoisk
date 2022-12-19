@@ -1,0 +1,25 @@
+<div class='form__filter-wrapper' [class.active]='filterFormService.isActive' #top_filter_form>
+  <div class='form__filter-container'>
+    <div class='form__header-container'>
+      <p>Filters</p>
+      <button type='button' (click)='closeFilterMenu()'><span>&times;</span></button>
+    </div>
+    <form (ngSubmit)='submit()' [formGroup]='form'>
+
+      <label>Type</label>
+      <select formControlName='type'>
+        <option value=''>--</option>
+        <option value={{topType.TOP_100}}>Top 100</option>
+        <option value={{topType.TOP_250}}>Top 250</option>
+        <option value={{topType.TOP_AWAIT}}>Top awaited</option>
+      </select>
+
+      <div class='flex-filler'></div>
+
+      <div class='form__button-holder'>
+        <button class='form__button form__button_primary' type='submit' [disabled]='form.invalid'>Show results</button>
+        <button class='form__button form__button_secondary' type='button' (click)='resetFilters()'>Clear filter</button>
+      </div>
+    </form>
+  </div>
+</div>

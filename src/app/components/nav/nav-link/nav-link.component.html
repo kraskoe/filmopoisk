@@ -1,5 +1,6 @@
 <li>
-  <a [routerLink]='link' [queryParams]='params' routerLinkActive='active'>
+<!--  <a [routerLink]='link' routerLinkActive='active'>-->
+  <a [routerLink]='link' [queryParams]='params' [class.active]='isLinkActive(link)'>
     <span><app-svg-icon [icon]=icon [size]=size></app-svg-icon></span> {{text}}
   </a>
 </li>

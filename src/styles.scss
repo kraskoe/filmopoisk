@@ -1,8 +1,12 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 /*--- Color variables ---*/
 body {
   --color-background: #EFEFEF;
   --color-background-light: #FFFFFF;
-  --color-background-dark: #242426;
+  --color-background-dark: #CCCCCC;
   --color-text-primary: #000000;
   --color-text-pale: #AFB2B6;
   --color-primary: #7B61FF;
@@ -18,7 +22,7 @@ body {
 [data-theme='dark'] {
   --color-background: #000000;
   --color-background-light: #323537;
-  --color-background-dark: #CCCCCC;
+  --color-background-dark: #242426;
   --color-text-primary: #FFFFFF;
   transition: color 1s;
 }
@@ -27,21 +31,18 @@ body {
 %tpl_movie-title {
   font-weight: 700;
   font-size: 1.1rem;
-  //line-height: 1.5;
   color: var(--color-text-primary);
 }
 
 %tpl_movie-subtitle {
   font-weight: 500;
   font-size: 1rem;
-  //line-height: 1.5;
   color: var(--color-text-primary);
 }
 
 %tpl_secondary-text {
   font-weight: 500;
   font-size: 1rem;
-  //line-height: 1.5;
   color: var(--color-text-pale);
 }
 
@@ -92,6 +93,7 @@ button{
   outline: none;
   border: none;
   cursor: pointer;
+  background: none;
 }
 
 button -moz-focus-inner{
@@ -115,12 +117,170 @@ img{
   vertical-align: top;
 }
 
-/*--- Common styles ---*/
-/*--- Used deprecated ::ng-deep instead ---*/
-//a:hover svg {
-//  fill: var(--color-primary-hover);
-//}
-//
-//a.active svg {
-//  fill: var(--color-primary);
-//}
+form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+input,
+select {
+  width: 100%;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-light);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid transparent;
+
+  &::placeholder {
+    font-weight: 500;
+    color: var(--color-text-pale);
+  }
+
+  &.ng-invalid.ng-dirty {
+    border: 1px solid var(--color-error);
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  @media (min-width: 36rem) {
+    width: auto;
+  }
+}
+
+.flex-filler {
+  flex-grow: 1;
+}
+
+.form__filter-wrapper {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  transition: left 0.5s;
+
+  &.active {
+    left: 0;
+  }
+}
+
+.form__filter-container {
+  max-width: 48rem;
+  width: 100%;
+  padding: 2rem 1.5rem 3rem;
+  background-color: var(--color-background-dark);
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 36rem) {
+    max-width: calc(518rem / 16);
+    padding: 2.5rem 2.5rem 3rem;
+    border-radius: 1rem 0 0 1rem;
+  }
+}
+
+.form__header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form__button {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.form__button_primary {
+  background-color: var(--color-primary);
+}
+
+.form__button_secondary {
+  background-color: var(--color-background-light);
+
+  @media (min-width: 36rem) {
+    order: -1;
+  }
+}
+
+.form__button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.form__button-holder {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+  @media (min-width: 36rem) {
+    flex-direction: row;
+  }
+}
+
+.form__input-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.swiper {
+}
+
+.swiper-wrapper {
+  //overflow: hidden;
+}
+
+.swiper-slide {
+  overflow: hidden;
+  //position: absolute;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: calc(var(--swiper-navigation-size) * 2);
+  height: calc(var(--swiper-navigation-size) * 2);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-background-light);
+  }
+}

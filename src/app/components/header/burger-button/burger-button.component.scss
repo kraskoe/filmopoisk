@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+span {
+  height: 0.125rem;
+  width: 1.25rem;
+  background-color: #FFFFFF;
+  margin-bottom: 0.4375rem;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+button {
+  display: flex;
+  height: 3.75rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+
+  & span:last-child {
+    margin-bottom: 0;
+  }
+
+  &.active {
+
+    span {
+      margin-bottom: 0;
+    }
+
+    & span:nth-child(2) {
+      display: none;
+    }
+
+    & span:first-child {
+      transform: rotateZ(45deg) translate(0.0625rem, 0.0625rem);
+    }
+
+    & span:last-child {
+      transform: rotateZ(-45deg);
+    }
+  }
+}

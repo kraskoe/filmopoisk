@@ -1,0 +1,31 @@
+:host {
+  position: fixed;
+  top: 6.5rem;
+  left: 150%;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: var(--color-background);
+  transition: all 0.5s;
+  min-width: 15rem;
+
+  &.active {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+nav {
+  padding: 5rem 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+footer {
+  font-weight: 500;
+  color: var(--color-text-pale);
+}

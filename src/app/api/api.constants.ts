@@ -1,10 +1,3 @@
-export const TOKEN = 'b60ac02b-c031-4aa9-975d-2784607ea79d';
-
-export const KINOPOISK_BASE_URL = 'https://kinopoiskapiunofficial.tech';
-export const MOVIES_ENDPOINT = '/api/v2.2/films';
-export const TOP_MOVIES_ENDPOINT = '/api/v2.2/films/top';
-export const PREMIERES_ENDPOINT = '/api/v2.2/films/premieres';
-
 export enum MoviesQueryOrder {
   RATING = 'RATING',
   NUM_VOTE = 'NUM_VOTE',

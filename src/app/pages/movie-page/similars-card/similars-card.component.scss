@@ -1,0 +1,22 @@
+:host {
+  height: 100%;
+}
+
+h5,
+h6 {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.similars__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.similars__poster {
+  border-radius: 1rem;
+  object-fit: cover;
+}

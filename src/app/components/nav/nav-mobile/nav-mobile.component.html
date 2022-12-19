@@ -1,0 +1,20 @@
+<nav>
+  <ul>
+    <app-nav-link
+      *ngFor='let link of links'
+      [link]=link.link
+      [params]=link.params
+      [icon]=link.icon
+      [text]=link.text
+      [size]='link.size ? link.size : 20'
+      (click)='mainMenuService.toggleActive()'
+    ></app-nav-link>
+  </ul>
+  <div style='display: flex; gap: 1rem;'>
+    <app-svg-icon [icon]='"light-icon"'></app-svg-icon>
+    <app-switcher></app-switcher>
+    <app-svg-icon [icon]='"dark-icon"'></app-svg-icon>
+  </div>
+  <div class='flex-filler'></div>
+  <footer>© All Rights Reserved</footer>
+</nav>

@@ -45,9 +45,10 @@ export class ResponsiveService implements OnDestroy {
   }
 
   private _setMediaBreakpoint(width: number): void {
-    if (width < 768) {
+    if (width < 576) {
       this._mediaBreakpoint$.next('sm');
-    } else if (width >= 768 && width < 1024) {
+    // } else if (width >= 768 && width < 1024) {
+    } else if (width < 1024) {
       this._mediaBreakpoint$.next('md');
     } else {
       this._mediaBreakpoint$.next('lg');

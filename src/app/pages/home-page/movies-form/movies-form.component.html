@@ -1,0 +1,70 @@
+<div class='form__filter-wrapper' [class.active]='filterFormService.isActive' #movies_filter_form>
+  <div class='form__filter-container'>
+    <div class='form__header-container'>
+      <p>Filters</p>
+      <button type='button' (click)='closeFilterMenu()'><span>&times;</span></button>
+    </div>
+    <form (ngSubmit)='submit()' [formGroup]='form'>
+
+      <label>Full or short movie name</label>
+      <small *ngIf='form.get("keyword")?.invalid && form.get("keyword")?.dirty'>Query must contain {{form.get('keyword')?.errors?.['minlength']?.requiredLength}} or more symbols</small>
+      <input type='text' placeholder='Search' formControlName='keyword'>
+      <hr/>
+
+      <div *ngIf='!moviesService.filtersLoading; else spinner'>
+        <label>Genre</label>
+        <select formControlName='genres'>
+          <option value=''>--</option>
+          <option *ngFor='let genre of moviesService.genres' value={{genre.id}}>{{genre.genre}}</option>
+        </select>
+        <label>Country</label>
+        <select formControlName='countries'>
+          <option value=''>--</option>
+          <option *ngFor='let country of moviesService.countries' value={{country.id}}>{{country.country}}</option>
+        </select>
+      </div>
+      <ng-template #spinner>
+        <app-spinner></app-spinner>
+      </ng-template>
+
+      <label>Type</label>
+      <select formControlName='type'>
+        <option value=''>--</option>
+        <option value={{moviesType.FILM}}>Film</option>
+        <option value={{moviesType.TV_SHOW}}>Show</option>
+        <option value={{moviesType.TV_SERIES}}>Series</option>
+        <option value={{moviesType.MINI_SERIES}}>Mini-Series</option>
+        <option value={{moviesType.ALL}}>All</option>
+      </select>
+
+      <label>Sort by</label>
+      <select formControlName='order'>
+        <option value=''>--</option>
+        <option value={{moviesOrder.RATING}}>Rating</option>
+        <option value={{moviesOrder.NUM_VOTE}}>Votes</option>
+        <option value={{moviesOrder.YEAR}}>Year</option>
+      </select>
+
+      <label>Years</label>
+      <small *ngIf='(form.get("yearFrom")?.invalid && form.get("yearFrom")?.dirty) || (form.get("yearTo")?.invalid && form.get("yearTo")?.dirty)'>Year must be integer in range from 1985 to {{getMaxYear()}}</small>
+      <div class='form__input-holder'>
+        <input type='number' placeholder='From' formControlName='yearFrom'>
+        <input type='number' placeholder='To' formControlName='yearTo'>
+      </div>
+
+      <label>Rating</label>
+      <small *ngIf='(form.get("ratingFrom")?.invalid && form.get("ratingFrom")?.dirty) || (form.get("ratingTo")?.invalid && form.get("ratingTo")?.dirty)'>Rating must be integer in range from 1 to 10</small>
+      <div class='form__input-holder'>
+        <input type='number' placeholder='From' formControlName='ratingFrom'>
+        <input type='number' placeholder='To' formControlName='ratingTo'>
+      </div>
+
+      <div class='flex-filler'></div>
+
+      <div class='form__button-holder'>
+        <button class='form__button form__button_primary' type='submit' [disabled]='form.invalid'>Show results</button>
+        <button class='form__button form__button_secondary' type='button' (click)='resetFilters()'>Clear filter</button>
+      </div>
+    </form>
+  </div>
+</div>

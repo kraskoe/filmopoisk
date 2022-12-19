@@ -1,4 +1,4 @@
-<div class='card' *ngIf='movie'>
+<div class='card' *ngIf='movie' [routerLink]='[link, movie.kinopoiskId]'>
   <div class='card__image-wrapper'>
     <img [src]=movie.posterUrlPreview alt='poster'/>
     <div class='card__imdb' [attr.data-rating]='rating'>{{movie.ratingImdb | number: '1.1-1'}}</div>
@@ -7,6 +7,6 @@
     <h5 *ngIf='movie.nameRu?.trim()'>{{movie.nameRu}}</h5>
     <h6 *ngIf='movie.nameOriginal?.trim(); else year'>{{movie.nameOriginal + ', ' + movie.year}}</h6>
     <ng-template #year><h6>{{movie.year}}</h6></ng-template>
-    <div class='card__country'>{{movie.countries[0].country + ' • ' + movie.genres[0].genre}}</div>
+    <div class='card__country'>{{movie.countries.length && movie.countries[0] && movie.countries[0].country + ' • ' + movie.genres.length && movie.genres[0] && movie.genres[0].genre}}</div>
   </div>
 </div>

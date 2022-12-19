@@ -1,0 +1,27 @@
+<div class='form__filter-wrapper' [class.active]='filterFormService.isActive' #premieres_filter_form>
+  <div class='form__filter-container'>
+    <div class='form__header-container'>
+      <p>Filters</p>
+      <button type='button' (click)='closeFilterMenu()'><span>&times;</span></button>
+    </div>
+    <form (ngSubmit)='submit()' [formGroup]='form'>
+
+      <label>Year</label>
+      <small *ngIf='form.get("year")?.invalid && form.get("year")?.dirty'>Year must be integer in range from 1985 to {{getMaxYear()}}</small>
+      <input type='number' placeholder='Year' formControlName='year'>
+
+      <label>Month</label>
+      <select formControlName='month'>
+        <option value=''>--</option>
+        <option *ngFor='let month of monthsNumbers' value={{months[month]}}>{{months[month]}}</option>
+      </select>
+
+      <div class='flex-filler'></div>
+
+      <div class='form__button-holder'>
+        <button class='form__button form__button_primary' type='submit' [disabled]='form.invalid'>Show results</button>
+        <button class='form__button form__button_secondary' type='button' (click)='resetFilters()'>Clear filter</button>
+      </div>
+    </form>
+  </div>
+</div>

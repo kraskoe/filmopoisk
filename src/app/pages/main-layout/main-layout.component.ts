@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MoviesAPIService} from '../../api/moviesAPI.service';
 import {ResponsiveService} from '../../services/responsive.service';
+import {MainMenuService} from '../../services/main-menu.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -10,7 +10,7 @@ import {ResponsiveService} from '../../services/responsive.service';
 export class MainLayoutComponent implements OnInit {
   screenSize: string = '';
 
-  constructor(private responsiveService: ResponsiveService) {}
+  constructor(private responsiveService: ResponsiveService, public mainMenuService: MainMenuService) {}
 
   ngOnInit() {
     this.responsiveService.mediaBreakpoint$.subscribe((size) => {
