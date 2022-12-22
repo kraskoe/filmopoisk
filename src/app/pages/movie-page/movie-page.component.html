@@ -1,5 +1,8 @@
 <section *ngIf='!moviesService.isLoading; else spinner'>
   <div *ngIf='!moviesService.error; else errorMessage'>
+    <div class='movie-page__back'>
+      <app-nav-link [icon]='"back-icon"' [size]='24' [text]='"Back to previous page"' (mousedown)='back()'></app-nav-link>
+    </div>
     <div class='movie-page__wrapper'>
       <div class='movie-page__poster-container'>
         <img [src]=moviesService.movie.posterUrlPreview alt='poster' class='movie-page__poster' *ngIf='moviesService.movie' (click)='toggleModalActive()'/>
@@ -48,7 +51,7 @@
       </div>
     </div>
 
-    <div class='movie-page__similars-container'>
+    <div class='movie-page__similars-container' *ngIf='moviesService.similarMovies?.length'>
       <p>Recommendations</p>
       <swiper
         [slidesPerView]=slides

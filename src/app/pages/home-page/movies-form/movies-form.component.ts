@@ -35,7 +35,7 @@ export class MoviesFormComponent {
 
   ngOnInit() {
     //--- Daily limit of 500 requests ---//
-    // this.moviesService.getFilters();
+    this.moviesService.getFilters();
     this.sub = this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.form.reset();
       this.form.patchValue(params);

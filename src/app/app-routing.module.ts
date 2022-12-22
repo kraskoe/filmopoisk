@@ -6,7 +6,8 @@ import {appRoutes} from './router/routes'
 const routes: Routes = appRoutes;
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes
+  imports: [RouterModule.forRoot(
+    routes
   )],
   exports: [RouterModule]
 })

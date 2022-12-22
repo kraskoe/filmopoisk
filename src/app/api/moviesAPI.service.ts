@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin, Observable, tap} from 'rxjs';
 
 import {PageType} from './api.constants';
 import {
@@ -112,7 +112,7 @@ export class MoviesAPIService {
     this.movieError = null;
     this.movie = null;
 
-    forkJoin([
+    return forkJoin([
       this.http.get<ISingleMovie>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT + `/${id}`),
       this.http.get<ISimilarMoviesResponse>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT + `/${id}/similars`)
     ])

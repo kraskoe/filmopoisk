@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Provider} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -30,4 +30,10 @@ export class PremieresInterceptor implements HttpInterceptor {
     }
     return next.handle(request);
   }
+}
+
+export const premieresInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: PremieresInterceptor,
+  multi: true
 }

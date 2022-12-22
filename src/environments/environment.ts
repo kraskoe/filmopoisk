@@ -6,4 +6,7 @@ export const environment = {
   TOP_MOVIES_ENDPOINT: '/api/v2.2/films/top',
   PREMIERES_ENDPOINT: '/api/v2.2/films/premieres',
   COUNTRIES_GENRES_ENDPOINT: '/api/v2.2/films/filters',
+  USERS_ENDPOINT: '/users',
+  AUTHENTICATE_ENDPOINT: '/users/authenticate',
+  REGISTER_ENDPOINT: '/users/register',
 };

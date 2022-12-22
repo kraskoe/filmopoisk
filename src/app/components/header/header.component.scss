@@ -16,8 +16,42 @@ button {
   padding: 1rem;
   background-color: var(--color-primary);
   border-radius: 0.5rem;
+  color: #FFFFFF;
 
   &:hover {
     background-color: var(--color-primary-hover);
   }
+}
+
+.auth-menu__wrapper {
+  position: relative;
+
+  &:hover .auth-menu__container {
+    opacity: 1;
+    max-height: 300%;
+  }
+}
+
+.auth-menu__container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+  max-height: 0;
+  padding-top: 0.5rem;
+  z-index: 2;
+}
+
+.auth-menu__controls {
+  width: 10rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.auth-menu_user-creds {
+  width: 3.75rem;
+  height: 3.75rem;
+  font-weight: 500;
+  font-size: 1.25rem;
 }

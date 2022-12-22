@@ -1,0 +1,29 @@
+<div class='auth-form__container'>
+  <p class='auth-form__title'>Sign In</p>
+
+  <small *ngIf='authService.error'>{{authService.error}}</small>
+
+  <form (ngSubmit)='submit()' [formGroup]='signInForm'>
+    <label>Email</label>
+    <small *ngIf='signInForm.get("email")?.invalid && signInForm.get("email")?.dirty'>Please, enter valid email</small>
+    <input type='email' placeholder='Your email' autocomplete='email' formControlName='email'>
+
+    <label>Password</label>
+    <small *ngIf='signInForm.get("password")?.errors?.["minlength"] && signInForm.get("password")?.dirty'>
+      Password length: {{signInForm.get('password')?.errors?.['minlength']?.actualLength}}/{{signInForm.get('password')?.errors?.['minlength']?.requiredLength}} symbols.
+    </small>
+    <input type='password' placeholder='Your password' autocomplete='current-password' formControlName='password'>
+
+    <button type='submit' [disabled]='signInForm.invalid'>Sign In</button>
+  </form>
+
+  <p>Don't have an account?
+    <a [routerLink]='link' (click)='resetError()'>
+      Sign Up
+    </a>
+  </p>
+</div>
+
+<div class='spinner__wrapper' *ngIf='authService.isLoading'>
+  <app-spinner></app-spinner>
+</div>

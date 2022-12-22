@@ -1,4 +1,6 @@
-div {
+section {
+  background: url('../../../assets/404_bg.png') no-repeat center center;
+  background-color: var(--color-background);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,8 +8,18 @@ div {
   height: 100%;
 }
 
+div {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3rem;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 p {
-  margin-top: 2rem;
   font-size: 2rem;
   color: var(--color-text-primary);
 }

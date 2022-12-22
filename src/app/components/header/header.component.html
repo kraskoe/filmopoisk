@@ -12,7 +12,25 @@
     </div>
     <app-burger-button *ngIf='screenSize === "md"'></app-burger-button>
   </div>
-  <button *ngIf='screenSize === "lg"'>
-    <app-svg-icon icon='user-icon'></app-svg-icon>
-  </button>
+  <div class='auth-menu__wrapper' *ngIf='screenSize === "lg" && !authService.user'>
+    <button>
+      <app-svg-icon icon='user-icon'></app-svg-icon>
+    </button>
+    <div class='auth-menu__container'>
+      <div class='auth-menu__controls'>
+        <app-auth-menu [link]='loginLink' [text]='"Log In"'></app-auth-menu>
+        <app-auth-menu [link]='signupLink' [text]='"Sign Up"'></app-auth-menu>
+      </div>
+    </div>
+  </div>
+  <div class='auth-menu__wrapper' *ngIf='screenSize === "lg" && authService.user'>
+    <button class='auth-menu_user-creds'>
+      {{userCreds | uppercase}}
+    </button>
+    <div class='auth-menu__container'>
+      <div class='auth-menu__controls'>
+        <app-auth-menu [text]='"Log Out"' (mousedown)='authService.logoutUser()'></app-auth-menu>
+      </div>
+    </div>
+  </div>
 </header>

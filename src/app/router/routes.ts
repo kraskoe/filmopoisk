@@ -16,7 +16,5 @@ export const appRoutes: Routes = [{
     {path: AppPaths.MOVIE, component: MoviePageComponent},
     {path: AppPaths.TOP, component: PopularPageComponent},
     {path: AppPaths.PREMIERES, component: PremieresPageComponent},
-    { path: '404', component: NotFoundPageComponent },
-    { path: '**', component: NotFoundPageComponent }
-  ]
-}];
+  ]},
+];

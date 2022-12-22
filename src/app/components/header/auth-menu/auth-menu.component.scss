@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-background-dark);
+  cursor: pointer;
+  z-index: 2;
+}
+
+a {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+}

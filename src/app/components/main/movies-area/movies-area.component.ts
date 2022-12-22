@@ -20,7 +20,7 @@ export class MoviesAreaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe((params: Params) => {
       //--- Daily limit of 500 requests ---//
-      // this.moviesService.getMovies(this.pageType, params);
+      this.moviesService.getMovies(this.pageType, params);
     })
   }
 

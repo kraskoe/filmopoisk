@@ -1,5 +1,13 @@
 @use 'src/styles';
 
+:host {
+  transition: all 0.5s;
+
+  &:hover {
+    scale: 1.05;
+  }
+}
+
 .card__image-wrapper {
   width: 100%;
   overflow: hidden;

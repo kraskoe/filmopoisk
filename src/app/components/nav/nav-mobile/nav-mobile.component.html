@@ -9,12 +9,15 @@
       [size]='link.size ? link.size : 20'
       (click)='mainMenuService.toggleActive()'
     ></app-nav-link>
+    <app-nav-link [link]=loginLink [icon]='"login-icon"' [size]='24' [text]='"Log In"' (mousedown)='mainMenuService.toggleActive()' *ngIf='!authService.user'></app-nav-link>
+    <app-nav-link [icon]='"username-icon"' [size]='24' [text]='authService.user.username' *ngIf='authService.user'></app-nav-link>
+    <app-nav-link [icon]='"logout-icon"' [size]='24' [text]='"Log Out"' (mousedown)='mainMenuService.toggleActive()' (click)='authService.logoutUser()' *ngIf='authService.user'></app-nav-link>
   </ul>
-  <div style='display: flex; gap: 1rem;'>
+  <div class='flex-filler'></div>
+  <div style='display: flex; gap: 1rem; margin-bottom: 4rem; margin-top: 3rem;'>
     <app-svg-icon [icon]='"light-icon"'></app-svg-icon>
     <app-switcher></app-switcher>
     <app-svg-icon [icon]='"dark-icon"'></app-svg-icon>
   </div>
-  <div class='flex-filler'></div>
   <footer>© All Rights Reserved</footer>
 </nav>

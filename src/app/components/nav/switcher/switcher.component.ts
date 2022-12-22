@@ -6,10 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./switcher.component.scss']
 })
 export class SwitcherComponent {
-  darkMode = false;
+  lightMode = !!localStorage.getItem('lightMode') || false;
 
   toggleTheme() {
-    this.darkMode = !this.darkMode;
-    document.body.setAttribute('data-theme', this.darkMode ? 'dark' : 'light');
+    this.lightMode = !this.lightMode;
+    localStorage.setItem('lightMode', this.lightMode ? '1' : '');
+    document.documentElement.setAttribute('data-theme', this.lightMode ? 'light' : 'dark');
   }
 }

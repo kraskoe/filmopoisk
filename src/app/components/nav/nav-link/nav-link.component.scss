@@ -39,3 +39,9 @@ li a {
     left: 0;
   }
 }
+
+a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

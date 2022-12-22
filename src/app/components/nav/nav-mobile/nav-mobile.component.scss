@@ -17,7 +17,7 @@
 }
 
 nav {
-  padding: 5rem 1rem 2rem;
+  padding: 3rem 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,4 +28,13 @@ nav {
 footer {
   font-weight: 500;
   color: var(--color-text-pale);
+}
+
+a {
+  color: var(--color-text-pale);
+}
+
+p {
+  color: var(--color-text-pale);
+  margin-bottom: 1rem;
 }

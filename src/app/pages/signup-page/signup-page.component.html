@@ -1,0 +1,39 @@
+<div class='auth-form__container'>
+  <p class='auth-form__title'>Sign Up</p>
+
+  <small *ngIf='authService.error'>{{authService.error}}</small>
+
+  <form (ngSubmit)='submit()' [formGroup]='signUpForm'>
+    <label>Name</label>
+    <small *ngIf='signUpForm.get("username")?.invalid && signUpForm.get("username")?.dirty'>Only letters, digits, spaces allowed</small>
+    <input type='text' placeholder='Your name' formControlName='username'>
+
+    <label>Email</label>
+    <small *ngIf='signUpForm.get("email")?.invalid && signUpForm.get("email")?.dirty'>Please, enter valid email</small>
+    <input type='email' placeholder='Your email' autocomplete='email' formControlName='email'>
+
+    <label>Password</label>
+    <small *ngIf='signUpForm.get("password")?.errors?.["minlength"] && signUpForm.get("password")?.dirty'>
+      Password length: {{signUpForm.get('password')?.errors?.['minlength']?.actualLength}}/{{signUpForm.get('password')?.errors?.['minlength']?.requiredLength}} symbols.
+    </small>
+    <input type='password' placeholder='Your password' autocomplete='current-password' formControlName='password'>
+
+    <label>Confirm Password</label>
+    <small *ngIf='passwordMatchError'>
+      Password mismatch
+    </small>
+    <input type='password' placeholder='Confirm password' autocomplete='off' formControlName='confirmPassword' [class.ng-invalid]='passwordMatchError'>
+
+    <button type='submit' [disabled]='signUpForm.invalid || authService.isLoading'>Sign Up</button>
+  </form>
+
+  <p>Already have an account?
+    <a [routerLink]='link' (click)='resetError()'>
+      Sign In
+    </a>
+  </p>
+</div>
+
+<div class='spinner__wrapper' *ngIf='authService.isLoading'>
+  <app-spinner></app-spinner>
+</div>

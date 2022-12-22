@@ -3,11 +3,12 @@
 @import 'swiper/scss/pagination';
 
 /*--- Color variables ---*/
-body {
-  --color-background: #EFEFEF;
-  --color-background-light: #FFFFFF;
-  --color-background-dark: #CCCCCC;
-  --color-text-primary: #000000;
+:root {
+  --color-background: #000000;
+  --color-background-transparent: rgba(0, 0, 0, 0.7);
+  --color-background-light: #323537;
+  --color-background-dark: #242426;
+  --color-text-primary: #FFFFFF;
   --color-text-pale: #AFB2B6;
   --color-primary: #7B61FF;
   --color-primary-hover: #917CFF;
@@ -19,11 +20,12 @@ body {
   transition: color 1s;
 }
 
-[data-theme='dark'] {
-  --color-background: #000000;
-  --color-background-light: #323537;
-  --color-background-dark: #242426;
-  --color-text-primary: #FFFFFF;
+:root[data-theme='light'] {
+  --color-background: #EFEFEF;
+  --color-background-transparent: rgba(239, 239, 239, 0.7);
+  --color-background-light: #FFFFFF;
+  --color-background-dark: #CCCCCC;
+  --color-text-primary: #000000;
   transition: color 1s;
 }
 
