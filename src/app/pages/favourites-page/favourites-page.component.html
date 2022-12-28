@@ -1,0 +1,25 @@
+<section *ngIf='!moviesService.isFavLoading; else spinner'>
+  <div *ngIf='moviesService.favMovies; else empty'>
+    <div *ngIf='!moviesService.favError; else errorMessage' class='movie__grid-container'>
+      <app-movie-card
+        *ngFor='let movie of moviesService.favMovies'
+        [movie]='movie'
+        [id]='movie.kinopoiskId'
+      ></app-movie-card>
+    </div>
+    <ng-template #errorMessage>
+      <div class='error__container'>
+        <p class='error'>Error: {{moviesService.error}}</p>
+        <p>Return to <a [routerLink]='"/"'>Main page</a></p>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #empty>
+    <div class='movie__empty-container'>
+<!--      Your favourite movie list is empty-->
+    </div>
+  </ng-template>
+</section>
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>

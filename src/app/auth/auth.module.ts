@@ -10,6 +10,7 @@ import {SharedModule} from '../components/shared/shared.module';
 import {fakeBackendProvider} from './interceptors/fake-backend.interceptor';
 import {AuthMenuComponent} from '../components/header/auth-menu/auth-menu.component';
 import {AuthService} from './auth.service';
+import {AuthGuard} from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {AuthService} from './auth.service';
     // provider used to create fake backend
     fakeBackendProvider,
     AuthService,
+    AuthGuard,
   ],
 })
 

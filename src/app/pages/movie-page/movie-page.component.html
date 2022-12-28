@@ -6,6 +6,9 @@
     <div class='movie-page__wrapper'>
       <div class='movie-page__poster-container'>
         <img [src]=moviesService.movie.posterUrlPreview alt='poster' class='movie-page__poster' *ngIf='moviesService.movie' (click)='toggleModalActive()'/>
+        <div class='movie-page__favourite' *ngIf='authService.user'>
+          <app-favourite-label [id]='id' [className]='"large"'></app-favourite-label>
+        </div>
       </div>
       <div class='movie-page__props'>
         <div>

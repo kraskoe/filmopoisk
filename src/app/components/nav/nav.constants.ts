@@ -1,7 +1,7 @@
 import {AppEndpoints} from '../../router/router.constants';
 import {MonthString} from '../../api/api.constants';
 
-export const links = [
+export const navLinks = [
   {
     link: AppEndpoints.MOVIES,
     icon: 'home-icon',
@@ -21,5 +21,10 @@ export const links = [
     },
     icon: 'hot-icon',
     text: 'Premieres',
+  },
+  {
+    link: AppEndpoints.FAVOURITES,
+    icon: 'favourites-icon',
+    text: 'Favourites',
   },
 ]

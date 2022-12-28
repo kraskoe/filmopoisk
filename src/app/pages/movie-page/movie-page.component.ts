@@ -7,6 +7,7 @@ import {ResponsiveService} from '../../services/responsive.service';
 import {MoviesAPIService} from '../../api/moviesAPI.service';
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import {AuthService} from '../../auth/auth.service';
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -21,10 +22,12 @@ export class MoviePageComponent {
   sub: Subscription | undefined;
   isModalActive = false;
   slides = 3;
+  id: number | undefined;
   private history: string[] = [];
 
   constructor(
     public moviesService: MoviesAPIService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private responsiveService: ResponsiveService,
     private router: Router,
@@ -53,6 +56,7 @@ export class MoviePageComponent {
       }
     });
     this.sub = this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
       //--- Daily limit of 500 requests ---//
       this.moviesService.getMovie(+params['id']);
     });
@@ -70,10 +74,7 @@ export class MoviePageComponent {
   }
 
   back(): void {
-    console.log(this.history);
-    // this.history.pop();
     if (this.history.length > 0) {
-      console.log('back');
       this.location.back()
     } else {
       this.router.navigateByUrl('/');

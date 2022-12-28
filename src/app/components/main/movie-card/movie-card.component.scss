@@ -52,6 +52,12 @@
   }
 }
 
+.card__favourite {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .card__info-wrapper {
   display: flex;
   flex-direction: column;

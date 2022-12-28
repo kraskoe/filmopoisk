@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IMovie} from '../../../api/types';
+import {IMovie, ISingleMovie} from '../../../api/types';
 import {AppEndpoints} from '../../../router/router.constants';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,11 +9,16 @@ import {AppEndpoints} from '../../../router/router.constants';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit{
-  @Input() movie: IMovie | null = null;
-  rating: string = '';
+  @Input() movie: IMovie | ISingleMovie | null = null;
+  @Input() id: number | undefined;
+  rating: number = 0;
+  ratingColor: string = '';
   link = AppEndpoints.MOVIES;
 
+  constructor(public authService: AuthService) {}
+
   ngOnInit () {
-    this.rating = this.movie && (!this.movie.ratingImdb ? 'null' : this.movie.ratingImdb < 5 ? 'low' : this.movie.ratingImdb < 7 ? 'average' : 'high') || 'low';
+    this.rating = this.movie && (this.movie.ratingImdb ? this.movie.ratingImdb : this.movie.rating) || 0;
+    this.ratingColor = this.movie && (!this.rating ? 'null' : this.rating < 5 ? 'low' : this.rating < 7 ? 'average' : 'high') || 'low';
   }
 }

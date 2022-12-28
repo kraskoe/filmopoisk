@@ -1,7 +1,10 @@
 <div class='card' *ngIf='movie' [routerLink]='[link, movie.kinopoiskId]'>
   <div class='card__image-wrapper'>
     <img [src]=movie.posterUrlPreview alt='poster'/>
-    <div class='card__imdb' [attr.data-rating]='rating'>{{movie.ratingImdb | number: '1.1-1'}}</div>
+    <div class='card__imdb' [attr.data-rating]='ratingColor'>{{rating | number: '1.1-1'}}</div>
+    <div class='card__favourite' *ngIf='authService.user'>
+      <app-favourite-label [id]='id'></app-favourite-label>
+    </div>
   </div>
   <div class='card__info-wrapper'>
     <h5 *ngIf='movie.nameRu?.trim()'>{{movie.nameRu}}</h5>

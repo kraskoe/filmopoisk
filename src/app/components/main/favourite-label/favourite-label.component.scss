@@ -1,0 +1,21 @@
+:host {
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &.large button {
+    padding: 0.8rem 0.7rem 0.7rem;
+    width: 100%;
+  }
+}
+
+button {
+  padding: 0.3rem 0.7rem 0.2rem;
+  background-color: var(--color-background-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+}

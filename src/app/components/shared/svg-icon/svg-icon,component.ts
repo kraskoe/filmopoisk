@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'app-svg-icon',
   template: `
     <svg attr.width="{{width}}px" attr.height="{{height}}px" attr.fill="{{fill}}" attr.class="{{class}}">
-      <use attr.xlink:href="assets/{{icon}}.svg#{{icon}}"></use>
+      <use attr.xlink:href="assets/icons/{{icon}}.svg#{{icon}}"></use>
     </svg>
   `,
   styles: [`

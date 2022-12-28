@@ -5,8 +5,9 @@ import {HomePageComponent} from '../pages/home-page/home-page.component';
 import {MoviePageComponent} from '../pages/movie-page/movie-page.component';
 import {PopularPageComponent} from '../pages/popular-page/popular-page.component';
 import {PremieresPageComponent} from '../pages/premieres-page/premieres-page.component';
-import {NotFoundPageComponent} from '../pages/not-found-page/not-found-page.component';
 import {AppEndpoints, AppPaths} from './router.constants';
+import {FavouritesPageComponent} from '../pages/favourites-page/favourites-page.component';
+import {AuthGuard} from '../auth/auth.guard';
 
 export const appRoutes: Routes = [{
   path: '', component: MainLayoutComponent, children: [
@@ -16,5 +17,6 @@ export const appRoutes: Routes = [{
     {path: AppPaths.MOVIE, component: MoviePageComponent},
     {path: AppPaths.TOP, component: PopularPageComponent},
     {path: AppPaths.PREMIERES, component: PremieresPageComponent},
+    {path: AppPaths.FAVOURITES, component: FavouritesPageComponent, canActivate: [AuthGuard]},
   ]},
 ];

@@ -21,10 +21,13 @@ export class MoviesAPIService {
   isLoading = false;
   filtersLoading = false;
   isMovieLoading = false;
+  isFavLoading = false;
   error: string | null = null;
   filtersError: string | null = null;
   movieError: string | null = null;
+  favError: string | null = null;
   movies: IMovie[] | null = null;
+  favMovies: ISingleMovie[] | null = null;
   genres: IFilterGenre[] | null = null;
   countries: IFilterCountry[] | null = null;
   movie: ISingleMovie | null = null;
@@ -131,6 +134,36 @@ export class MoviesAPIService {
             } else if (error.error.message) {
               this.movieError = error.error.message;
             } else this.movieError = 'Server error';
+          }
+        }
+      )
+  }
+
+  getFavourites(ids: number[]) {
+    this.isFavLoading = true;
+    this.favError = null;
+    this.favMovies = null;
+    const favRequests = [];
+
+    for (let id of ids) {
+      favRequests.push(this.http.get<ISingleMovie>(environment.KINOPOISK_BASE_URL + environment.MOVIES_ENDPOINT + `/${id}`));
+    }
+
+    return forkJoin(favRequests)
+      .subscribe(
+        {
+          next: results => {
+            this.favMovies = results;
+            this.favError = null;
+            this.isFavLoading = false;
+          },
+          error: error => {
+            this.isFavLoading = false;
+            if (error.error.error) {
+              this.favError = error.error.error;
+            } else if (error.error.message) {
+              this.favError = error.error.message;
+            } else this.favError = 'Server error';
           }
         }
       )

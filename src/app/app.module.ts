@@ -43,6 +43,8 @@ import { ActiveFiltersComponent } from './components/main/active-filters/active-
 import { FilterComponent } from './components/main/filter/filter.component';
 import { AuthLayoutComponent } from './pages/auth-layout/auth-layout.component';
 import {SharedModule} from './components/shared/shared.module';
+import { FavouriteLabelComponent } from './components/main/favourite-label/favourite-label.component';
+import { FavouritesPageComponent } from './pages/favourites-page/favourites-page.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import {SharedModule} from './components/shared/shared.module';
     ActiveFiltersComponent,
     FilterComponent,
     AuthLayoutComponent,
+    FavouriteLabelComponent,
+    FavouritesPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ export enum AppPaths {
   AUTH = 'auth',
   LOGIN = 'signin',
   SIGNUP = 'signup',
+  FAVOURITES = 'favourites',
 }
 
 export enum AppEndpoints {
@@ -16,4 +17,5 @@ export enum AppEndpoints {
   AUTH = '/auth',
   LOGIN = '/auth/signin',
   SIGNUP = '/auth/signup',
+  FAVOURITES = '/favourites',
 }

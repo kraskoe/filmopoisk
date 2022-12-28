@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { links } from '../nav.constants';
+import { navLinks } from '../nav.constants';
 import {MainMenuService} from '../../../services/main-menu.service';
 import {AppEndpoints} from '../../../router/router.constants';
 import {AuthService} from '../../../auth/auth.service';
@@ -10,7 +10,7 @@ import {AuthService} from '../../../auth/auth.service';
   styleUrls: ['./nav-mobile.component.scss']
 })
 export class NavMobileComponent implements OnInit {
-  links = links;
+  links = navLinks;
   userCreds: string | undefined;
   loginLink = AppEndpoints.LOGIN;
 

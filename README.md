@@ -1,27 +1,102 @@
-# Filmopoisk
+<!-- LOGO -->
+![Logo][logo]
+<div style='text-align: center'>
+<h1>PIXEMA</h1>
+Movie APP based on Kinopoisk API
+<hr/>
+<img src='https://img.shields.io/badge/-Angular-DD0031?logo=angular&logoColor=white&style=plastic' alt='Angular badge'>
+<h4>LIVE DEMO</h4>
+<hr/>
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#description">Description</a>
+    </li>
+    <li>
+      <a href="#installation">Installation</a>
+    </li>
+    <li><a href="#details">Details</a></li>
+  </ol>
+</details>
 
-## Development server
+<!-- DESCRIPTION -->
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Pixema is a free movie database. The service provides following opportunities:
 
-## Code scaffolding
+- watch through all movie database or top movies/premieres specifically;
+- search for movies and use different filtering;
+- look through detailed movie information and recommended movies;
+- authorized users can add/remove movies to/from their favourites list;
+- change the application theme (dark/light).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<!-- INSTALLATION -->
+## Installation
 
-## Build
+1. Clone repository:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   `git clone https://github.com/kraskoe/filmopoisk`
+2. Install dependencies:
 
-## Running unit tests
+   `npm i`
+3. Start local server:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   `npm start`
 
-## Running end-to-end tests
+<!-- DETAILS -->
+## Details
+Once you started the app, you can see home page with all movies presented. You can switch between this view and top/premieres view
+![Home page][home]
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+If you want to toggle between dark/light schemes, click on switch at the navigation menu
+![Toggle themes][light-theme]
 
-## Further help
+You can use simple search at the top of page or advanced filters (toggled by the button in search field)
+![Search filters][filters]
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+All chosen filters are shown at page and can be turned off one by one
+![Active filters][active-filters]
+
+If you click on movie card you can see detailed information on that movie
+![Detailed information][single]
+
+...along with recommended movies
+![Recommended movies][recommended]
+
+In order to use advanced options you must log in / sign up
+![Sign up][signup]
+
+After that you can use favourites page
+![Empty favourites][favs-empty]
+
+In order to add a movie to your favourites, click on the favourites badge, and you will be able to see all your favourites
+![Favourites][favs]
+
+<p style='text-align: right'><a href="#readme-top">back to top &#8593;</a></p>
+
+[demo]: url
+
+[logo]: screens/logo.png
+
+[home]: screens/home.png
+[light-theme]: screens/light-theme.png
+[filters]: screens/filters.png
+[active-filters]: screens/active-filters.png
+[active-filters]: screens/active-filters.png
+[single]: screens/singlemovie.png
+[recommended]: screens/recommended.png
+[signup]: screens/signup.png
+[favs-empty]: screens/favourites-empty.png
+[favs]: screens/favourites.png
+
+[angular-badge]: https://img.shields.io/badge/-Angular-DD0031?logo=angular&logoColor=white&style=plastic
+[react-badge]: https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=plastic
+[react-router-badge]: https://img.shields.io/badge/-React%20Router-CA4245?logo=react-router&logoColor=white&style=plastic
+[styled-components-badge]: https://img.shields.io/badge/-Styled%20components-DB7093?logo=styled-components&logoColor=white&style=plastic
+[redux-badge]: https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=plastic
+[redux-toolkit-badge]: https://img.shields.io/badge/-Redux%20Toolkit-764ABC?logo=redux&logoColor=white&style=plastic
+[typescript-badge]: https://img.shields.io/badge/-Typescript-3178C6?logo=typescript&logoColor=white&style=plastic

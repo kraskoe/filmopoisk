@@ -9,11 +9,11 @@ import {Component} from '@angular/core';
     min-height: 100%;
     background-color: var(--color-background);
     padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: row;
 
     @media (min-width: 36rem) {
       padding: 2.5rem;
-      display: flex;
-      flex-direction: row;
     }
 
     @media (min-width: 64rem) {
