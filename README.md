@@ -1,6 +1,6 @@
 <!-- LOGO -->
 ![Logo][logo]
-<div style='text-align: center'>
+<div align="center">
 <h1>PIXEMA</h1>
 Movie APP based on Kinopoisk API
 <hr/>
@@ -76,7 +76,7 @@ After that you can use favourites page
 In order to add a movie to your favourites, click on the favourites badge, and you will be able to see all your favourites
 ![Favourites][favs]
 
-<p style='text-align: right'><a href="#readme-top">back to top &#8593;</a></p>
+<p align="right"><a href="#start-of-content">back to top &#8593;</a></p>
 
 [demo]: url
 
