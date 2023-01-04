@@ -4,7 +4,7 @@
     <app-movie-card
       *ngFor='let movie of moviesService.movies'
       [movie]='movie'
-      [id]='movie.kinopoiskId'
+      [id]='movie.kinopoiskId || movie.filmId'
     ></app-movie-card>
   </div>
   <ng-template #errorMessage>

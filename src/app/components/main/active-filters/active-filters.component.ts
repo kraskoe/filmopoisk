@@ -27,5 +27,4 @@ export class ActiveFiltersComponent {
   ngOnDestroy() {
     this.sub?.unsubscribe();
   }
-
 }

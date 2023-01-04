@@ -18,7 +18,7 @@ export class MovieCardComponent implements OnInit{
   constructor(public authService: AuthService) {}
 
   ngOnInit () {
-    this.rating = this.movie && (this.movie.ratingImdb ? this.movie.ratingImdb : this.movie.rating) || 0;
+    this.rating = this.movie && (this.movie.ratingImdb ? this.movie.ratingImdb : this.movie.rating && parseFloat(this.movie.rating.toString())) || 0;
     this.ratingColor = this.movie && (!this.rating ? 'null' : this.rating < 5 ? 'low' : this.rating < 7 ? 'average' : 'high') || 'low';
   }
 }

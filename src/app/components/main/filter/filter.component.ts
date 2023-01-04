@@ -24,6 +24,7 @@ export class FilterComponent implements OnInit {
   removeFilter(key: string) {
     const { [key as keyof typeof this.params]: removedParam, ...restParams } = this.params;
     const url = this.router.url.split('?')[0];
+    delete restParams['page'];
     this.router.navigate([url], {
       queryParams: restParams,
     });

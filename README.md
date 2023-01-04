@@ -5,7 +5,8 @@
 Movie APP based on Kinopoisk API
 <hr/>
 <img src='https://img.shields.io/badge/-Angular-DD0031?logo=angular&logoColor=white&style=plastic' alt='Angular badge'>
-<h4>LIVE DEMO</h4>
+
+[//]: # (<h4>LIVE DEMO</h4>)
 <hr/>
 </div>
 

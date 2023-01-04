@@ -25,6 +25,7 @@ export interface IFiltersResponse {
 
 export interface ISingleMovie {
   kinopoiskId: number,
+  filmId: number,
   imdbId: string,
   nameRu: string,
   nameEn: string,
@@ -74,6 +75,7 @@ export interface ISingleMovie {
 
 export interface IMovie {
   kinopoiskId: number,
+  filmId: number,
   imdbId: string,
   nameRu: string,
   nameEn: string | null,

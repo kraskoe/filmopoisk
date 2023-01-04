@@ -1,4 +1,4 @@
-<div class='card' *ngIf='movie' [routerLink]='[link, movie.kinopoiskId]'>
+<div class='card' *ngIf='movie' [routerLink]='[link, id]'>
   <div class='card__image-wrapper'>
     <img [src]=movie.posterUrlPreview alt='poster'/>
     <div class='card__imdb' [attr.data-rating]='ratingColor'>{{rating | number: '1.1-1'}}</div>

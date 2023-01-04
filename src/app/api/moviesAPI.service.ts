@@ -56,16 +56,15 @@ export class MoviesAPIService {
             }
             if (pageType === PageType.PREMIERES) this.totalItems = (response as IPremieresResponse).total;
             this.error = null;
-            this.isLoading = false;
           },
           error: error => {
-            this.isLoading = false;
             if (error.error.error) {
               this.error = error.error.error;
             } else if (error.error.message) {
               this.error = error.error.message;
             } else this.error = 'Server error';
-          }
+          },
+          complete: () => this.isLoading = false
         }
       )
   }
@@ -96,16 +95,15 @@ export class MoviesAPIService {
             this.genres = (filters as IFiltersResponse).genres;
             this.countries = (filters as IFiltersResponse).countries;
             this.filtersError = null;
-            this.filtersLoading = false;
           },
           error: error => {
-            this.filtersLoading = false;
             if (error.error.error) {
               this.filtersError = error.error.error;
             } else if (error.error.message) {
               this.filtersError = error.error.message;
             } else this.filtersError = 'Server error';
-          }
+          },
+          complete: () => this.filtersLoading = false
         }
       )
   }
@@ -125,16 +123,15 @@ export class MoviesAPIService {
             this.movie = results[0];
             this.similarMovies = results[1].items;
             this.movieError = null;
-            this.isMovieLoading = false;
           },
           error: error => {
-            this.isMovieLoading = false;
             if (error.error.error) {
               this.movieError = error.error.error;
             } else if (error.error.message) {
               this.movieError = error.error.message;
             } else this.movieError = 'Server error';
-          }
+          },
+          complete: () => this.isMovieLoading = false
         }
       )
   }
@@ -155,16 +152,15 @@ export class MoviesAPIService {
           next: results => {
             this.favMovies = results;
             this.favError = null;
-            this.isFavLoading = false;
           },
           error: error => {
-            this.isFavLoading = false;
             if (error.error.error) {
               this.favError = error.error.error;
             } else if (error.error.message) {
               this.favError = error.error.message;
             } else this.favError = 'Server error';
-          }
+          },
+          complete: () => this.isFavLoading = false
         }
       )
   }
