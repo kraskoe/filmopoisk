@@ -8,8 +8,8 @@
   </div>
   <div class='card__info-wrapper'>
     <h5 *ngIf='movie.nameRu?.trim()'>{{movie.nameRu}}</h5>
-    <h6 *ngIf='movie.nameOriginal?.trim(); else year'>{{movie.nameOriginal + ', ' + movie.year}}</h6>
-    <ng-template #year><h6>{{movie.year}}</h6></ng-template>
+    <h6 *ngIf='movie.nameOriginal?.trim(); else year'>{{movie.nameOriginal}}<span *ngIf='movie.year'>{{', ' + movie.year}}</span></h6>
+    <ng-template #year><h6 *ngIf='movie.year'>{{movie.year}}</h6></ng-template>
     <div class='card__country'>{{movie.countries.length && movie.countries[0] && movie.countries[0].country + ' • ' + movie.genres.length && movie.genres[0] && movie.genres[0].genre}}</div>
   </div>
 </div>

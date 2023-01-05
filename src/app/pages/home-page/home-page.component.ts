@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ChangeDetectorRef, AfterContentChecked, OnInit} from '@angular/core';
 
 import {PageType} from '../../api/api.constants';
 import {MoviesAPIService} from '../../api/moviesAPI.service';
@@ -11,13 +11,13 @@ import {AppEndpoints} from '../../router/router.constants';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit, AfterContentChecked {
   type = PageType.HOME;
   sub: Subscription | undefined;
   page = 1;
   link = AppEndpoints.MOVIES;
 
-  constructor(public moviesService: MoviesAPIService, private route: ActivatedRoute) {}
+  constructor(public moviesService: MoviesAPIService, private route: ActivatedRoute, private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe((params: Params) => {
@@ -25,6 +25,9 @@ export class HomePageComponent {
     })
   }
 
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
   ngOnDestroy() {
     this.sub?.unsubscribe();
   }

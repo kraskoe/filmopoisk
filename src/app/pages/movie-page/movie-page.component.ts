@@ -75,7 +75,8 @@ export class MoviePageComponent {
 
   back(): void {
     if (this.history.length > 0) {
-      this.location.back()
+      // window.history.back();
+      this.location.back();
     } else {
       this.router.navigateByUrl('/');
     }

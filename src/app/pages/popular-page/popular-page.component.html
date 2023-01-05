@@ -1,3 +1,6 @@
 <app-movies-area [pageType]='type'></app-movies-area>
-<app-pagination [link]='link' [maxPage]='moviesService.pages ? moviesService.pages : 1' [page]='page' *ngIf='!moviesService.isLoading && moviesService.movies'></app-pagination>
+<app-pagination
+  [link]='link'
+  [maxPage]='moviesService.pages ? moviesService.pages : 1'
+  [page]='page' *ngIf='!moviesService.isLoading && moviesService.movies && moviesService.movies.length'></app-pagination>
 <app-top-form></app-top-form>

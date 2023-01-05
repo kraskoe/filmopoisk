@@ -1,7 +1,10 @@
 <section *ngIf='!moviesService.isLoading; else spinner'>
   <div *ngIf='!moviesService.error; else errorMessage'>
     <div class='movie-page__back'>
-      <app-nav-link [icon]='"back-icon"' [size]='24' [text]='"Back to previous page"' (mousedown)='back()'></app-nav-link>
+      <button (click)='back()'>
+        <span><app-svg-icon [icon]='"back-icon"' [size]='24'></app-svg-icon></span> Back to previous page
+      </button>
+<!--      <app-nav-link [icon]='"back-icon"' [size]='24' [text]='"Back to previous page"' (mousedown)='back($event)'></app-nav-link>-->
     </div>
     <div class='movie-page__wrapper'>
       <div class='movie-page__poster-container'>

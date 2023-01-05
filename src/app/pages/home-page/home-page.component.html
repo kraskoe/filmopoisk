@@ -1,4 +1,7 @@
-<app-active-filters *ngIf='moviesService.genres && moviesService.countries'></app-active-filters>
+<app-active-filters *ngIf='!moviesService.filtersLoading'></app-active-filters>
 <app-movies-area [pageType]='type'></app-movies-area>
-<app-pagination [link]='link' [maxPage]='moviesService.pages ? moviesService.pages : 1' [page]='page' *ngIf='!moviesService.isLoading && moviesService.movies'></app-pagination>
+<app-pagination
+  [link]='link'
+  [maxPage]='moviesService.pages ? moviesService.pages : 1'
+  [page]='page' *ngIf='!moviesService.isLoading && moviesService.movies && moviesService.movies.length'></app-pagination>
 <app-movies-form></app-movies-form>
